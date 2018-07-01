@@ -1,0 +1,25 @@
+{
+  "name": "nv-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "eosjs": "^15.0.3",
+    "express": "^4.16.3",
+    "serverless-http": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachalam/namevault.co.git"
+  },
+  "author": "Zach Alam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zachalam/namevault.co/issues"
+  },
+  "homepage": "https://github.com/zachalam/namevault.co#readme"
+}
