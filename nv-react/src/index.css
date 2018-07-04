@@ -1,5 +1,16 @@
 body {
   margin: 0;
   padding: 0;
+  padding-top:3em;
   font-family: sans-serif;
+  background-color:#9AA4B6;
+  text-align:center;
+}
+
+h1,h2,h3 { padding:0; margin:0; color:white; font-weight: bold; }
+
+.container {
+  background-color:white;
+  padding: 2em;
+  max-width:500px;
 }
