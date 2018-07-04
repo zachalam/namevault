@@ -10,8 +10,18 @@ const config_cb = require('./config/coinbase.js')
 const { CoinbaseCommerce } = require('coinbase-commerce')
 const coinbase = new CoinbaseCommerce(config_cb)
 
+const getPrice = require('./helpers/price.js')
+
 app.get('/', function (req, res) {
   res.send('namevault.co api')
+})
+
+app.get('/price', function (req,res) {
+  // this call ALWAYS returns a price.
+  getPrice((price) => {
+    res.status(200).json({success: true, price})
+  })
+  
 })
 
 // ---------------------

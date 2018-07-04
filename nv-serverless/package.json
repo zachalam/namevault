@@ -1,12 +1,13 @@
 {
   "name": "nv-serverless",
   "version": "1.0.0",
-  "description": "",
+  "description": "Serverless resources for namevault.",
   "main": "index.js",
   "dependencies": {
     "coinbase-commerce": "^1.0.3",
     "eosjs": "^15.0.3",
     "express": "^4.16.3",
+    "get-json": "^1.0.0",
     "serverless-http": "^1.6.0"
   },
   "devDependencies": {},
