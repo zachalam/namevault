@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd';
 import Routes from './Routes'
 import logo from '../../images/logo.png'
-import 'antd/dist/antd.css';
+import 'semantic-ui-css/semantic.min.css';
 import '../../index.css';
 
-const { Header, Content, Footer } = Layout;
 
 class App extends Component {
+
+  componentDidMount() {
+    // save price 
+  }
+
   render() {
     return (
     <div>
-        <Routes />
+            <Routes />
     </div>
     );
   }

@@ -6,10 +6,11 @@
     "react-scripts": "1.1.4"
   },
   "dependencies": {
-    "antd": "^3.6.5",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "semantic-ui-css": "^2.3.2",
+    "semantic-ui-react": "^0.81.3"
   },
   "scripts": {
     "start": "react-scripts start",

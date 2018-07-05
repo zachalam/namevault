@@ -1,16 +1,15 @@
-body {
-  margin: 0;
-  padding: 0;
-  padding-top:3em;
-  font-family: sans-serif;
-  background-color:#9AA4B6;
-  text-align:center;
+html, body {
+  height: 90%;
 }
 
-h1,h2,h3 { padding:0; margin:0; color:white; font-weight: bold; }
+html {
+  display: table;
+  margin: auto;
+}
 
-.container {
-  background-color:white;
-  padding: 2em;
-  max-width:500px;
+body {
+  display: table-cell;
+  vertical-align: middle;
+
+  padding-bottom:2em;
 }
