@@ -1,6 +1,10 @@
 const serverless = require('serverless-http')
 const express = require('express')
+const cors = require('cors')
 const app = express()
+
+// middleware for Access-Control-Allow-Origin
+app.use(cors())
 
 const Eos = require('eosjs')
 const config_eos = require('./config/eos.js')

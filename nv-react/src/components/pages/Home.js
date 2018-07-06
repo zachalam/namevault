@@ -3,21 +3,23 @@ import { Input, Icon, Card } from 'semantic-ui-react'
 import logo from '../../images/logo.png'
 import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
+import ResultCard from '../blocks/ResultCard'
 
 class Home extends Component {
 
     state = {
         searchTerm: '',
-        searchLoading: false
+        searchLoading: false,
+        searchResponse: {}
     }
     
     runSearch = (name) => {
         fetch(`${MasterConfig.httpEndpoint}/lookup/${name}`)
-        .then(function(response) {
-          return response.json();
+        .then((response) => {
+          return response.json()
         })
-        .then(function(myJson) {
-          console.log(myJson);
+        .then((searchResponse) => {
+          this.setState({searchResponse, searchLoading: false})
         });
     }
 
@@ -33,7 +35,7 @@ class Home extends Component {
 
         if(value.length===12) {
             // trigger search run.
-            this.setState({searchLoading: true})
+            this.setState({searchLoading: true, searchResponse: {}})
             this.runSearch(value)
         }
     }
@@ -58,12 +60,16 @@ class Home extends Component {
                                 style={{backgroundColor: 'transparent', marginBottom: '0.25em'}}
                                 value={this.state.searchTerm}
                                 loading={this.state.searchLoading}
+                                autofocus={true}
                             />
                             <br />
                             <span>{this.state.searchTerm.length} characters so far, 12 required.</span>
                         </Card.Description>
                     </Card.Content>
                 </Card>
+
+                <ResultCard searchResponse={this.state.searchResponse} />
+
             </FadeIn>
             <br /><br />
             <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="github" />GitHub</a>
