@@ -34,8 +34,8 @@ app.get('/price', function (req,res) {
 app.get('/lookup/:account', function (req, res) {
   let { account } = req.params
   eos.getAccount(account)
-      .then((account) => {
-        res.status(200).json({success: true, account})
+      .then((details) => {
+        res.status(200).json({success: true, account, details})
       })
       .catch((error) => {
         console.log(error)

@@ -64,11 +64,15 @@ class Home extends Component {
                             />
                             <br />
                             <span>{this.state.searchTerm.length} characters so far, 12 required.</span>
+                        
+                            <br /><br />
+                            <ResultCard searchResponse={this.state.searchResponse} />
+
                         </Card.Description>
                     </Card.Content>
                 </Card>
 
-                <ResultCard searchResponse={this.state.searchResponse} />
+                
 
             </FadeIn>
             <br /><br />

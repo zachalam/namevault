@@ -16,7 +16,7 @@ class ResultCard extends Component {
         if (nameAvailable)
             return ( 
                 <FadeIn>
-                    <Card fluid color='green'>
+                    <Card fluid>
                     <Card.Content>
                             <Card.Description>
                                 <h1>Available!</h1>
@@ -31,7 +31,7 @@ class ResultCard extends Component {
         // name is not available.
         return ( 
             <FadeIn>
-                <Card fluid color='red'>
+                <Card fluid>
                 <Card.Content>
                         <Card.Description>
                             <h3>Look's like that name is not available.</h3>
