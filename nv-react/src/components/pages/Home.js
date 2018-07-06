@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Input, Card } from 'semantic-ui-react'
+import { Input, Icon, Card } from 'semantic-ui-react'
 import logo from '../../images/logo.png'
 import FadeIn from 'react-fade-in'
+import MasterConfig from '../../config/Master'
 
 class Home extends Component {
 
@@ -10,6 +11,16 @@ class Home extends Component {
         searchLoading: false
     }
     
+    runSearch = (name) => {
+        fetch(`${MasterConfig.httpEndpoint}/lookup/${name}`)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(myJson) {
+          console.log(myJson);
+        });
+    }
+
     onSearchChange = (e) => {
         // only allow alphanumeric chars.
         let letters = /^[0-9a-zA-Z]+$/;
@@ -23,6 +34,7 @@ class Home extends Component {
         if(value.length===12) {
             // trigger search run.
             this.setState({searchLoading: true})
+            this.runSearch(value)
         }
     }
 
@@ -31,7 +43,7 @@ class Home extends Component {
         return (
             <div style={{textAlign: 'center', maxWidth: 500}}>
                 <img src={logo} />
-                <FadeIn delay={800}>
+                <FadeIn transitionDuration={800}>
 
                 <Card fluid color='blue'>
                     <Card.Content>
@@ -54,7 +66,10 @@ class Home extends Component {
                 </Card>
             </FadeIn>
             <br /><br />
-            100% Open Source
+            <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="github" />GitHub</a>
+             &nbsp; | &nbsp; 
+            <Icon name="medium" />Medium &nbsp; | &nbsp; 
+            <Icon name="reddit alien" />Reddit
             </div>
         );
     }
