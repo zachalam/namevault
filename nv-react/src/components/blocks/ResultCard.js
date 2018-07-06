@@ -6,8 +6,10 @@ class ResultCard extends Component {
 
     render() {
 
-        let { searchResponse } = this.props
+        let { searchResponse, accountPrice } = this.props
         let nameAvailable = !searchResponse.success
+
+        console.log("ap", accountPrice);
 
         // no result available.
         if(Object.keys(searchResponse).length === 0) return null
@@ -19,9 +21,13 @@ class ResultCard extends Component {
                     <Card fluid>
                     <Card.Content>
                             <Card.Description>
-                                <h1>Available!</h1>
-                                Get that account before someone else does.
-                                <Button positive fluid>Get Name</Button>
+                                <h1><Icon name='smile' />Available!</h1>
+                                Get <i>{searchResponse.account}</i> before someone else does.
+                                <div className='spacer' />
+                                <Button positive fluid size='big'>Buy Name, ${accountPrice} USD (one time)</Button>
+                                <div className='spacer' />
+                                Price includes 4kb of RAM and 0.2 EOS.
+                            
                             </Card.Description>
                         </Card.Content>
                     </Card>
@@ -34,7 +40,8 @@ class ResultCard extends Component {
                 <Card fluid>
                 <Card.Content>
                         <Card.Description>
-                            <h3>Look's like that name is not available.</h3>
+                            <h1><Icon name='frown' />Unavailable.</h1>
+                            Darn, looks like someone already has that name.
                         </Card.Description>
                     </Card.Content>
                 </Card>

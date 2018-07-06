@@ -10,7 +10,17 @@ class Home extends Component {
     state = {
         searchTerm: '',
         searchLoading: false,
-        searchResponse: {}
+        searchResponse: {},
+        accountPrice: ''
+    }
+
+    componentDidMount() {
+        // get pricing.
+        fetch(`${MasterConfig.httpEndpoint}/price`)
+        .then(response => response.json())
+        .then((pricing) => {
+          this.setState({accountPrice: pricing.price})
+        });      
     }
     
     runSearch = (name) => {
@@ -51,6 +61,12 @@ class Home extends Component {
                     <Card.Content>
                         <Card.Description>
 
+                            <ResultCard 
+                                accountPrice={this.state.accountPrice}
+                                searchResponse={this.state.searchResponse} 
+                            />
+                            <br />
+
                             <Input 
                                 size='massive' 
                                 icon='search' 
@@ -60,13 +76,12 @@ class Home extends Component {
                                 style={{backgroundColor: 'transparent', marginBottom: '0.25em'}}
                                 value={this.state.searchTerm}
                                 loading={this.state.searchLoading}
+                                disabled={this.state.searchLoading}
                                 autofocus={true}
                             />
                             <br />
                             <span>{this.state.searchTerm.length} characters so far, 12 required.</span>
                         
-                            <br /><br />
-                            <ResultCard searchResponse={this.state.searchResponse} />
 
                         </Card.Description>
                     </Card.Content>
@@ -78,8 +93,9 @@ class Home extends Component {
             <br /><br />
             <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="github" />GitHub</a>
              &nbsp; | &nbsp; 
-            <Icon name="medium" />Medium &nbsp; | &nbsp; 
-            <Icon name="reddit alien" />Reddit
+             <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="medium" />Medium</a>
+             &nbsp; | &nbsp; 
+             <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="reddit alien" />Reddit</a>
             </div>
         );
     }

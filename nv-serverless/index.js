@@ -39,7 +39,7 @@ app.get('/lookup/:account', function (req, res) {
       })
       .catch((error) => {
         console.log(error)
-        res.status(404).json({success: false, error: "Account not found"})
+        res.status(404).json({success: false, account, error: "Account not found"})
       })
 })
 
