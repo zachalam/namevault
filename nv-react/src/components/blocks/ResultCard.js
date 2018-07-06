@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Icon, Card } from 'semantic-ui-react'
+import { Button, Input, Icon, Card } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
 
 class ResultCard extends Component {
@@ -19,7 +19,9 @@ class ResultCard extends Component {
                     <Card fluid color='green'>
                     <Card.Content>
                             <Card.Description>
-                                <h3>Wow, you found yourself a cool name!</h3>
+                                <h1>Available!</h1>
+                                Get that account before someone else does.
+                                <Button positive fluid>Get Name</Button>
                             </Card.Description>
                         </Card.Content>
                     </Card>
