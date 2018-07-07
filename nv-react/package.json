@@ -6,6 +6,7 @@
     "react-scripts": "1.1.4"
   },
   "dependencies": {
+    "eosjs-ecc": "^4.0.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-fade-in": "^0.1.6",

@@ -23,7 +23,10 @@ class ResultCard extends Component {
                                 <h1><Icon name='smile' />Available!</h1>
                                 Get <i>{searchResponse.account}</i> before someone else does.
                                 <div className='spacer' />
-                                <BuyModal accountPrice={accountPrice} />
+                                <BuyModal 
+                                    searchResponse={searchResponse}
+                                    accountPrice={accountPrice} 
+                                />
                                 <div className='spacer' />
                                 Price includes 4kb of RAM and 0.2 EOS.
                             
