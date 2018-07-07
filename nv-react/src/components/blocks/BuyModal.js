@@ -8,40 +8,72 @@ class BuyModal extends Component {
         open: false,
         ownerPrivate: '',   // owner prv/pub key pair
         ownerPublic: '',
+        ownerLoading: false,
         activePrivate: '',  // active prv/pub key pair
-        activePublic: ''
+        activePublic: '',
+        activeLoading: false,
+        showActivePair: false // show the active keypair
     }
 
     open = () => { this.setState({open: true})}
     close = () => { this.setState({open: false})}
+    showActive = () => { this.setState({showActivePair:true}) }
 
-    genKey = (genOwner=true) => {
+    genKeyPair = (genType='owner') => {
         // generates a public private key pair.
-        // genOwner == true ? update 'owner', otherwise update 'active'
-        console.log(genOwner);
-        console.log("gen for owner");
-
+        // set loading.
+        this.setState({[`${genType}Loading`]:true})
+        
         ecc.randomKey().then(privateKey => {
             let publicKey = ecc.privateToPublic(privateKey)
-            if(genOwner) {
+            console.log("private key is", privateKey)
+            if(genType==='owner') {
                 // save for owner
                 this.setState({
                     ownerPrivate: privateKey,
-                    ownerPublic: publicKey
+                    ownerPublic: publicKey,
+                    ownerLoading: false
                 })
             } else {
                 // save for active
                 this.setState({
                     activePrivate: privateKey,
-                    activePublic: publicKey
+                    activePublic: publicKey,
+                    activeLoading: false
                 })
             }
 
         })
     }
 
+    renderKeyInputs = (isOwnerRender) => {
+
+        // generate inputs for active or owner keys.
+        let genType = isOwnerRender ? 'owner' : 'active'
+        let pubKey = isOwnerRender ? this.state.ownerPublic : this.state.activePublic
+        let privKey = isOwnerRender ? this.state.ownerPrivate : this.state.activePrivate
+
+        return (
+        <div>
+            <h3>{genType} public key &nbsp; <Button size='mini' onClick={() => {this.genKeyPair(genType)}} 
+            loading={this.state[`${genType}Loading`]}>need one?</Button></h3>
+            <div className="spacer" />
+            <Input placeholder='EOS8mUGcoTi12WMLtTfYFGBSFCtHUSVq15h3XUoMhiAXyRPtTgZjb' value={pubKey} fluid />
+            {privKey ? 
+                <Input 
+                    value={privKey} 
+                    size='mini' 
+                    label={{ icon: 'key' }} labelPosition='right corner'
+                    fluid disabled /> : null}
+        </div>
+        )
+    }
+
     render() {
         let { searchResponse, accountPrice } = this.props
+
+        console.log("state");
+        console.log(this.state)
 
         return (
         <div>
@@ -52,21 +84,19 @@ class BuyModal extends Component {
                 icon='checkmark' 
                 labelPosition='right' 
                 onClick={this.open}
-                content={`Buy Name: $${accountPrice} USD`}
+                content={`Get Name: $${accountPrice} USD`}
             />
             <Modal closeIcon size='tiny' dimmer='blurring' open={this.state.open} onClose={this.close}>
                 <Modal.Content>
+
                     <h1><Icon name='user circle' /> {searchResponse.account}</h1>
                     <p>Let's get your name registered on the EOS network.</p>
                     <Divider />
-                    <h3>Owner Public Key &nbsp; <Button size='mini' onClick={() => {this.genKey(true)}}>need one?</Button></h3>
+                    {this.renderKeyInputs(true)}
                     <div className="spacer" />
-                    <Input placeholder='EOS8mUGcoTi12WMLtTfYFGBSFCtHUSVq15h3XUoMhiAXyRPtTgZjb' value={this.state.ownerPublic} fluid />
-                    {this.state.ownerPrivate ? <Input
-                                                    defaultValue={this.state.ownerPrivate} size='mini' fluid
-                                                /> : null}
-                    <div className="spacer" />
-                    <a href="#">+ add active public key (not required)</a>
+                    {this.state.showActivePair ? this.renderKeyInputs(false) : 
+                    <Button size='mini' onClick={this.showActive}>+ add active public key (optional)</Button>}
+
                 </Modal.Content>
                 <Modal.Actions>
                     <Button positive 
