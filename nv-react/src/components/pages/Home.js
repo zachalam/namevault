@@ -77,11 +77,12 @@ class Home extends Component {
                                 value={this.state.searchTerm}
                                 loading={this.state.searchLoading}
                                 disabled={this.state.searchLoading}
-                                autofocus={true}
+                                error={this.state.searchResponse.success}
+                                autoFocus={true}
                             />
                             <br />
                             <span>{this.state.searchTerm.length} characters so far, 12 required.</span>
-                        
+                            <div className="spacer" />
 
                         </Card.Description>
                     </Card.Content>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Input, Icon, Card } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
+import BuyModal from './BuyModal'
 
 class ResultCard extends Component {
 
@@ -8,8 +9,6 @@ class ResultCard extends Component {
 
         let { searchResponse, accountPrice } = this.props
         let nameAvailable = !searchResponse.success
-
-        console.log("ap", accountPrice);
 
         // no result available.
         if(Object.keys(searchResponse).length === 0) return null
@@ -24,7 +23,7 @@ class ResultCard extends Component {
                                 <h1><Icon name='smile' />Available!</h1>
                                 Get <i>{searchResponse.account}</i> before someone else does.
                                 <div className='spacer' />
-                                <Button positive fluid size='big'>Buy Name, ${accountPrice} USD (one time)</Button>
+                                <BuyModal accountPrice={accountPrice} />
                                 <div className='spacer' />
                                 Price includes 4kb of RAM and 0.2 EOS.
                             
@@ -41,7 +40,7 @@ class ResultCard extends Component {
                 <Card.Content>
                         <Card.Description>
                             <h1><Icon name='frown' />Unavailable.</h1>
-                            Darn, looks like someone already has that name.
+                            Darn, someone already has <i>{searchResponse.account}</i>.
                         </Card.Description>
                     </Card.Content>
                 </Card>
