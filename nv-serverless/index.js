@@ -46,25 +46,31 @@ app.get('/lookup/:account', function (req, res) {
 // ---------------------
 
 // create a payment checkout endpoint.
-app.get('/checkout/:account', function (req, res) {
-  let { account } = req.params
-  coinbase.checkouts.create({
-    "name": account,
-    "description": "EOS Name Registration",
-    "local_price": {
-        "amount": config_cb.priceUSD,
-        "currency": "USD"
-    },
-    "pricing_type": "fixed_price",
-    "requested_info": []
-  })
-  .then((checkout) => {
-    res.status(200).json({success: true, checkout, 
-      redirect: `${config_cb.httpEndpoint}/${checkout.data.id}`})
-  })
-  .catch((error) => {
-    console.log(error)
-    res.status(404).json({success: false, error: "Could not create checkout."})
+app.get('/checkout/:account/:owner/:active?', function (req, res) {
+  let { account, owner, active } = req.params
+  let theDescription = [owner,active].filter((v) => {return v}).join(", ")
+
+  // get last price before creating checkout.
+  getPrice((latest_price) => {
+    // create coinbase checkout.
+    coinbase.checkouts.create({
+      "name": account,
+      "description": theDescription,
+      "local_price": {
+          "amount": latest_price,
+          "currency": "USD"
+      },
+      "pricing_type": "fixed_price",
+      "requested_info": []
+    })
+    .then((checkout) => {
+      res.status(200).json({success: true, checkout, 
+        redirect: `${config_cb.httpEndpoint}/${checkout.data.id}`})
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(404).json({success: false, error: "Could not create checkout."})
+    })
   })
 })
 
