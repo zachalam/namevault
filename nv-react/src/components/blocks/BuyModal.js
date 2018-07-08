@@ -69,7 +69,7 @@ class BuyModal extends Component {
                 onChange={(e) => this.onKeyChange(e,genType)} 
                 value={pubKey} 
                 fluid 
-                error={pubKey.length && !ecc.isValidPublic(pubKey) }   // highlight if not empty and invalid
+                error={Boolean(pubKey.length) && !ecc.isValidPublic(pubKey) }   // highlight if not empty and invalid
             />
             {privKey ? 
                 <Input 
@@ -104,7 +104,7 @@ class BuyModal extends Component {
                     <h1><Icon name='user circle' /> {searchResponse.account}</h1>
                     <p>
                         Let's get your name registered on the EOS network. 
-                        Make sure your private key is saved before continuing.
+                        Make sure your private key <Icon name='key' /> is saved before continuing.
                     </p>
                     <Divider />
                     {this.renderKeyInputs(true)}
@@ -118,6 +118,7 @@ class BuyModal extends Component {
                         accountPrice={accountPrice}
                         ownerPublic={this.state.ownerPublic}
                         activePublic={this.state.activePublic}
+                        name={searchResponse.account}
                     />
                 </Modal.Actions>
             </Modal>
