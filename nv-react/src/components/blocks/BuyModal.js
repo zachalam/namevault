@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Input, Icon, Modal, Divider } from 'semantic-ui-react'
 import ecc from 'eosjs-ecc'
+import PayButton from './PayButton'
 
 class BuyModal extends Component {
 
@@ -18,6 +19,12 @@ class BuyModal extends Component {
     open = () => { this.setState({open: true})}
     close = () => { this.setState({open: false})}
     showActive = () => { this.setState({showActivePair:true}) }
+    onKeyChange = (e,genType) => {
+        // capture typing of public key.
+        console.log("e");
+        console.log(e.target.value);
+        this.setState({[`${genType}Private`]: '', [`${genType}Public`]: e.target.value})
+    }
 
     genKeyPair = (genType='owner') => {
         // generates a public private key pair.
@@ -26,7 +33,6 @@ class BuyModal extends Component {
         
         ecc.randomKey().then(privateKey => {
             let publicKey = ecc.privateToPublic(privateKey)
-            console.log("private key is", privateKey)
             if(genType==='owner') {
                 // save for owner
                 this.setState({
@@ -58,22 +64,28 @@ class BuyModal extends Component {
             <h3>{genType} public key &nbsp; <Button size='mini' onClick={() => {this.genKeyPair(genType)}} 
             loading={this.state[`${genType}Loading`]}>need one?</Button></h3>
             <div className="spacer" />
-            <Input placeholder='EOS8mUGcoTi12WMLtTfYFGBSFCtHUSVq15h3XUoMhiAXyRPtTgZjb' value={pubKey} fluid />
+            <Input 
+                placeholder='EOS8mUGcoTi12WMLtTfYFGBSFCtHUSVq15h3XUoMhiAXyRPtTgZjb' 
+                onChange={(e) => this.onKeyChange(e,genType)} 
+                value={pubKey} 
+                fluid 
+                error={pubKey.length && !ecc.isValidPublic(pubKey) }   // highlight if not empty and invalid
+            />
             {privKey ? 
                 <Input 
                     value={privKey} 
                     size='mini' 
-                    label={{ icon: 'key' }} labelPosition='right corner'
-                    fluid disabled /> : null}
+                    label={{ icon: 'key', color: 'green' }} 
+                    labelPosition='right corner'
+                    fluid 
+                    disabled 
+                /> : null}
         </div>
         )
     }
 
     render() {
         let { searchResponse, accountPrice } = this.props
-
-        console.log("state");
-        console.log(this.state)
 
         return (
         <div>
@@ -90,19 +102,23 @@ class BuyModal extends Component {
                 <Modal.Content>
 
                     <h1><Icon name='user circle' /> {searchResponse.account}</h1>
-                    <p>Let's get your name registered on the EOS network.</p>
+                    <p>
+                        Let's get your name registered on the EOS network. 
+                        Make sure your private key is saved before continuing.
+                    </p>
                     <Divider />
                     {this.renderKeyInputs(true)}
-                    <div className="spacer" />
+                    <br />
                     {this.state.showActivePair ? this.renderKeyInputs(false) : 
                     <Button size='mini' onClick={this.showActive}>+ add active public key (optional)</Button>}
 
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button positive 
-                    icon='checkmark' 
-                    content={`Proceed To Coinbase: $${accountPrice}`}
-                    disabled={!ecc.isValidPublic(this.state.ownerPublic)} />
+                    <PayButton 
+                        accountPrice={accountPrice}
+                        ownerPublic={this.state.ownerPublic}
+                        activePublic={this.state.activePublic}
+                    />
                 </Modal.Actions>
             </Modal>
         </div>
