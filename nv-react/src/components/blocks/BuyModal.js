@@ -109,8 +109,8 @@ class BuyModal extends Component {
 
                     <h1><Icon name='user circle' /> {searchResponse.account}</h1>
                     <p>
-                        Let's get your name registered on the EOS network. 
-                        Make sure your private key <Icon name='key' /> is saved before continuing.
+                        Let's get your EOS name registered. 
+                        Make sure your <i>private key <Icon name='key' /> is saved</i> before continuing.
                     </p>
                     <Divider />
                     {this.renderKeyInputs(true)}
@@ -125,6 +125,8 @@ class BuyModal extends Component {
                         ownerPublic={this.state.ownerPublic}
                         activePublic={this.state.activePublic}
                         name={searchResponse.account}
+                        closeBuyModal={this.close}
+                        showSuccessModal={this.props.showSuccessModal}
                     />
                 </Modal.Actions>
             </Modal>

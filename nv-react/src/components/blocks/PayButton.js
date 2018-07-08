@@ -17,7 +17,14 @@ class PayButton extends Component {
         fetch(`${MasterConfig.httpEndpoint}/checkout/${name}/${ownerPublic}/${activePublic}`)
         .then(response => response.json())
         .then((checkout) => {
-          window.location=checkout.redirect
+          // save last checkout object
+          window.checkout=checkout
+          // open checkout
+          window.open(checkout.redirect)
+          // hide current modal
+          this.props.closeBuyModal()
+          // show success modal
+          this.props.showSuccessModal()
         });
     }
 
@@ -31,16 +38,16 @@ class PayButton extends Component {
 
         return (
         <div>
+            {!canSubmit ? <div>A <u>valid</u> EOS public key is required.<div className="spacer" /></div> : null}
             <Button 
                 positive 
                 icon='cart' 
-                content={`Proceed To Coinbase: $${accountPrice}`}
+                content={`Proceed To Coinbase: $${accountPrice} USD`}
                 disabled={!canSubmit} 
                 loading={this.state.isLoading}
                 onClick={this.getCheckout}
             />
             <div className="spacer" />
-            {!canSubmit ? '(A valid EOS public key is required)' : null}
         </div>
         )
     }

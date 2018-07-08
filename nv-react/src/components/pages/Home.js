@@ -4,6 +4,7 @@ import logo from '../../images/logo.png'
 import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
+import SuccessModal from '../blocks/SuccessModal'
 
 class Home extends Component {
 
@@ -11,7 +12,8 @@ class Home extends Component {
         searchTerm: '',
         searchLoading: false,
         searchResponse: {},
-        accountPrice: ''
+        accountPrice: '',
+        successModalOpen: false
     }
 
     componentDidMount() {
@@ -47,9 +49,15 @@ class Home extends Component {
             // trigger search run.
             this.setState({searchLoading: true, searchResponse: {}})
             this.runSearch(value)
-        }
+        } 
     }
 
+    showSuccessModal = () => {
+        // final step of checkout.
+        // resets search input & search term.
+        // shows successmodal.
+        this.setState({searchResponse: {},searchTerm: '',successModalOpen:true})
+    }
 
     render() {
         return (
@@ -63,7 +71,8 @@ class Home extends Component {
 
                             <ResultCard 
                                 accountPrice={this.state.accountPrice}
-                                searchResponse={this.state.searchResponse} 
+                                searchResponse={this.state.searchResponse}
+                                showSuccessModal={this.showSuccessModal} 
                             />
                             <br />
 
@@ -88,8 +97,6 @@ class Home extends Component {
                     </Card.Content>
                 </Card>
 
-                
-
             </FadeIn>
             <br /><br />
             <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="github" />GitHub</a>
@@ -97,6 +104,8 @@ class Home extends Component {
              <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="medium" />Medium</a>
              &nbsp; | &nbsp; 
              <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="reddit alien" />Reddit</a>
+           
+            <SuccessModal open={this.state.successModalOpen} />
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Icon, Card } from 'semantic-ui-react'
+import { Button, Input, Icon, Card, } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
 import BuyModal from './BuyModal'
 
@@ -25,7 +25,8 @@ class ResultCard extends Component {
                                 <div className='spacer' />
                                 <BuyModal 
                                     searchResponse={searchResponse}
-                                    accountPrice={accountPrice} 
+                                    accountPrice={accountPrice}
+                                    showSuccessModal={this.props.showSuccessModal} 
                                 />
                                 <div className='spacer' />
                                 Price includes 4kb of RAM and 0.2 EOS.
