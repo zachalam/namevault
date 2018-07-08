@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Icon, Modal } from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 
 class SuccessModal extends Component {
     
@@ -9,7 +9,7 @@ class SuccessModal extends Component {
     close = () => { this.setState({open: false})}
 
     componentDidUpdate(prevProps) {
-        if(prevProps.open != this.props.open)
+        if(prevProps.open !== this.props.open)
             this.setState({open: this.props.open})
     }    
 

@@ -62,7 +62,7 @@ class Home extends Component {
     render() {
         return (
             <div style={{textAlign: 'center', maxWidth: 500}}>
-                <img src={logo} />
+                <img src={logo} alt={'logo'} />
                 <FadeIn transitionDuration={800}>
 
                 <Card fluid color='blue'>
@@ -99,11 +99,11 @@ class Home extends Component {
 
             </FadeIn>
             <br /><br />
-            <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="github" />GitHub</a>
+            <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="github" />GitHub</a>
              &nbsp; | &nbsp; 
-             <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="medium" />Medium</a>
+             <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="medium" />Medium</a>
              &nbsp; | &nbsp; 
-             <a href="https://github.com/zachalam/namevault.co" target="_blank"><Icon name="reddit alien" />Reddit</a>
+             <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="reddit alien" />Reddit</a>
            
             <SuccessModal open={this.state.successModalOpen} />
             </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Icon, Card, } from 'semantic-ui-react'
+import { Icon, Card, } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
 import BuyModal from './BuyModal'
 

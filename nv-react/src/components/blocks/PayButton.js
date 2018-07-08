@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Icon, Modal, Divider } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import ecc from 'eosjs-ecc'
 import MasterConfig from '../../config/Master'
 
