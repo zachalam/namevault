@@ -21,9 +21,11 @@ class BuyModal extends Component {
     showActive = () => { this.setState({showActivePair:true}) }
     onKeyChange = (e,genType) => {
         // capture typing of public key.
-        console.log("e");
-        console.log(e.target.value);
         this.setState({[`${genType}Private`]: '', [`${genType}Public`]: e.target.value})
+    }
+
+    onKeyReset = (genType) => {
+        this.setState({[`${genType}Private`]: '', [`${genType}Public`]: ''})
     }
 
     genKeyPair = (genType='owner') => {
@@ -61,8 +63,12 @@ class BuyModal extends Component {
 
         return (
         <div>
-            <h3>{genType} public key &nbsp; <Button size='mini' onClick={() => {this.genKeyPair(genType)}} 
-            loading={this.state[`${genType}Loading`]}>need one?</Button></h3>
+            <h3>
+                {genType} public key &nbsp; 
+                <Button size='mini' onClick={() => {this.genKeyPair(genType)}} 
+                    loading={this.state[`${genType}Loading`]}>need one?</Button>
+                {pubKey ? <Button size='mini' icon='cancel' onClick={() => {this.onKeyReset(genType)}} /> : null }      
+            </h3>
             <div className="spacer" />
             <Input 
                 placeholder='EOS8mUGcoTi12WMLtTfYFGBSFCtHUSVq15h3XUoMhiAXyRPtTgZjb' 
