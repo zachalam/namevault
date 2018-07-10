@@ -7,7 +7,7 @@ name*vault* is an account creation service for the EOS blockchain.
 - No confusing plugins needed.
 - Simply search and create your account name!
 
-<a href="http://namevault.co"><img src="https://media.giphy.com/media/AF2L8BBJ4kGRfYgffg/giphy.gif" alt="namevault demo" /></a>
+<a href="http://namevault.co"><img src="https://media.giphy.com/media/dgfOysCTqd6JKn8f8l/giphy.gif" alt="namevault demo" /></a>
 
 ## What is an EOS account?
 
