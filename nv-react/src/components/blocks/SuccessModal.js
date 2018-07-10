@@ -9,7 +9,7 @@ class SuccessModal extends Component {
     close = () => { this.setState({open: false})}
 
     componentDidUpdate(prevProps) {
-        if(prevProps.open !== this.props.open)
+        if(Boolean(prevProps.open) !== Boolean(this.props.open))
             this.setState({open: this.props.open})
     }    
 

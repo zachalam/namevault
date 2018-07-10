@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Input, Icon, Card } from 'semantic-ui-react'
+import { Input, Button, Icon, Card } from 'semantic-ui-react'
 import logo from '../../images/logo.png'
 import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
 import SuccessModal from '../blocks/SuccessModal'
+import randomWord from '../../helpers/random'
 
 class Home extends Component {
 
@@ -59,6 +60,11 @@ class Home extends Component {
         this.setState({searchResponse: {},searchTerm: '',successModalOpen:true})
     }
 
+    onGenRandomWord = () => {
+        // run search with a random word.
+        this.onSearchChange({target: {value: randomWord()}})
+    }
+
     render() {
         return (
             <div style={{textAlign: 'center', maxWidth: 500}}>
@@ -90,7 +96,17 @@ class Home extends Component {
                                 autoFocus={true}
                             />
                             <br />
-                            <span>{this.state.searchTerm.length} characters so far, 12 required.</span>
+                            <span>
+                                {this.state.searchTerm.length}/12 characters.
+                                &nbsp; &nbsp;
+                                <Button animated size='mini' color='blue' onClick={this.onGenRandomWord}>
+                                <Button.Content visible>Random Name</Button.Content>
+                                <Button.Content hidden>
+                                    Generate
+                                </Button.Content>
+                                </Button>
+
+                            </span>
                             <div className="spacer" />
 
                         </Card.Description>
