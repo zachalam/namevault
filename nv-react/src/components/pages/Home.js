@@ -38,7 +38,7 @@ class Home extends Component {
 
     onSearchChange = (e) => {
         // only allow alphanumeric chars.
-        let letters = /^[0-9a-zA-Z]+$/;
+        let letters = /^[1-5a-zA-Z]+$/;
         let { value } = e.target;
 
         if(value.match(letters) || value === '') {
