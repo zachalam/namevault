@@ -4,6 +4,7 @@
   "description": "Serverless resources for namevault.",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "coinbase-commerce": "^1.0.3",
     "cors": "^2.8.4",
     "eosjs": "^15.0.3",

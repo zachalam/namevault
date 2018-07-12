@@ -2,7 +2,10 @@ const serverless = require('serverless-http')
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const bodyParser = require("body-parser");
 
+// get body.
+app.use(bodyParser.urlencoded({extended: true}));
 // middleware for Access-Control-Allow-Origin
 app.use(cors())
 
@@ -72,6 +75,14 @@ app.get('/checkout/:account/:owner/:active?', function (req, res) {
       res.status(404).json({success: false, error: "Could not create checkout."})
     })
   })
+})
+
+// payment callback, after payment
+app.post('/paid', function (req, res) {  
+  let { body } = req
+  let signature = req.get('X-CC-Webhook-Signature')
+  //let isVerified = coinbase.verifyWebhookSignature(signature, rawBody, config_cb.secret)
+  res.status(200).json({success: true, signature, body})
 })
 
 module.exports.handler = serverless(app);
