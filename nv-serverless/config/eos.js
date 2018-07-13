@@ -9,5 +9,6 @@ module.exports = {
     expireInSeconds: 60,
     broadcast: true,
     verbose: false, // API activity
-    sign: true
+    sign: true,
+    creatorAccountName: 'blockexpress'
 }

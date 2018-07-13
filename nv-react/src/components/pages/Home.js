@@ -44,13 +44,14 @@ class Home extends Component {
         if(value.match(letters) || value === '') {
             // save search term so far.
             this.setState({searchTerm: value})
-        }
 
-        if(value.length===12) {
-            // trigger search run.
-            this.setState({searchLoading: true, searchResponse: {}})
-            this.runSearch(value)
-        } 
+            // if the value suplied is the correct length, run search.
+            if(value.length===12) {
+                // trigger search run.
+                this.setState({searchLoading: true, searchResponse: {}})
+                this.runSearch(value)
+            } 
+        }
     }
 
     showSuccessModal = () => {
