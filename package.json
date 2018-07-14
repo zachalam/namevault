@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "cd nv-react && npm run build",
-    "deploy": "gh-pages -d nv-react/dist"
+    "deploy": "gh-pages -d nv-react/build"
   },
   "repository": {
     "type": "git",
