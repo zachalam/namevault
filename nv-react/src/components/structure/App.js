@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Routes from './Routes'
+import Home from '../pages/Home'
+
 import 'semantic-ui-css/semantic.min.css';
 import '../../index.css';
 
@@ -9,7 +10,7 @@ class App extends Component {
   render() {
     return (
     <div>
-            <Routes />
+            <Home />
     </div>
     );
   }
