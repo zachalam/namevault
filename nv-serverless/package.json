@@ -10,6 +10,7 @@
     "eosjs": "^15.0.3",
     "express": "^4.16.3",
     "get-json": "^1.0.0",
+    "random-words": "^1.1.0",
     "serverless-http": "^1.6.0"
   },
   "devDependencies": {},

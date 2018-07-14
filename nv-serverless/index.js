@@ -15,9 +15,13 @@ const paidFunction = require('./functions/paid.js')
 const checkoutFunction = require('./functions/checkout.js')
 const lookupFunction = require('./functions/lookup.js')
 const priceFunction = require('./functions/price.js')
+const wordFunction = require('./functions/word.js')
 
 // welcome message.
 app.get('/', function (req, res) { res.send('namevault.co says hi') })
+
+// generate random account
+app.get('/word', wordFunction)
 
 // get the current service price.
 app.get('/price', priceFunction)
