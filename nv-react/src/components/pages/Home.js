@@ -5,7 +5,6 @@ import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
 import SuccessModal from '../blocks/SuccessModal'
-import randomWord from '../../helpers/random'
 
 class Home extends Component {
 
@@ -62,8 +61,14 @@ class Home extends Component {
     }
 
     onGenRandomWord = () => {
-        // run search with a random word.
-        this.onSearchChange({target: {value: randomWord()}})
+        fetch(`${MasterConfig.httpEndpoint}/word`)
+        .then((response) => {
+          return response.json()
+        })
+        .then((wordResponse) => {
+            // run search with a random word.
+            this.onSearchChange({target: {value: wordResponse.word}})
+        });
     }
 
     render() {
