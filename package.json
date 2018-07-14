@@ -1,0 +1,24 @@
+{
+  "name": "namevault.co",
+  "version": "1.0.0",
+  "description": "namevault is an account creation service for the EOS blockchain.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "cd nv-react && npm run build",
+    "deploy": "gh-pages -d nv-react/dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachalam/namevault.co.git"
+  },
+  "author": "Zach Alam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zachalam/namevault.co/issues"
+  },
+  "homepage": "https://github.com/zachalam/namevault.co#readme",
+  "devDependencies": {
+    "gh-pages": "^1.2.0"
+  }
+}

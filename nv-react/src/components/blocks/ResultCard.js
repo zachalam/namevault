@@ -29,7 +29,7 @@ class ResultCard extends Component {
                                     showSuccessModal={this.props.showSuccessModal} 
                                 />
                                 <div className='spacer' />
-                                Price includes 4kb of RAM and 0.2 EOS.
+                                Price includes 4kb of RAM and 0.02 EOS.
                             
                             </Card.Description>
                         </Card.Content>
