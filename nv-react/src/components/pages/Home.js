@@ -73,13 +73,8 @@ class Home extends Component {
 
     render() {
         return (
-            <div style={{textAlign: 'center', maxWidth: 500}}>
-                <img src={logo} alt={'logo'} />
+            <div style={{textAlign: 'center'}}>
                 <FadeIn transitionDuration={800}>
-
-                <Card fluid color='blue'>
-                    <Card.Content>
-                        <Card.Description>
 
                             <ResultCard 
                                 accountPrice={this.state.accountPrice}
@@ -89,7 +84,7 @@ class Home extends Component {
                             <br />
 
                             <Input 
-                                size='massive' 
+                                size='huge' 
                                 icon='search' 
                                 placeholder='Find your EOS name...' 
                                 onChange={this.onSearchChange}
@@ -115,18 +110,8 @@ class Home extends Component {
                             </span>
                             <div className="spacer" />
 
-                        </Card.Description>
-                    </Card.Content>
-                </Card>
-
             </FadeIn>
-            <br /><br />
-            <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="github" />GitHub</a>
-             &nbsp; | &nbsp; 
-             <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="medium" />Medium</a>
-             &nbsp; | &nbsp; 
-             <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="reddit alien" />Reddit</a>
-           
+
             <SuccessModal open={this.state.successModalOpen} />
             </div>
         );

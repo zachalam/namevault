@@ -17,11 +17,11 @@ class ResultCard extends Component {
         if (nameAvailable)
             return ( 
                 <FadeIn>
-                    <Card fluid>
+                    <Card fluid color='green'>
                     <Card.Content>
                             <Card.Description>
                                 <h1><Icon name='smile' />Available!</h1>
-                                Get <i>{searchResponse.account}</i> before someone else does.
+                                Get <i>{searchResponse.account}</i> before someone else.
                                 <div className='spacer' />
                                 <BuyModal 
                                     searchResponse={searchResponse}
@@ -29,7 +29,7 @@ class ResultCard extends Component {
                                     showSuccessModal={this.props.showSuccessModal} 
                                 />
                                 <div className='spacer' />
-                                Price includes 4kb of RAM and 0.02 EOS.
+                                Includes 4kb of RAM and 0.02 EOS.
                             
                             </Card.Description>
                         </Card.Content>
@@ -40,7 +40,7 @@ class ResultCard extends Component {
         // name is not available.
         return ( 
             <FadeIn>
-                <Card fluid>
+                <Card fluid color='red'>
                 <Card.Content>
                         <Card.Description>
                             <h1><Icon name='frown' />Unavailable.</h1>

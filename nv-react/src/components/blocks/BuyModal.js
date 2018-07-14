@@ -102,7 +102,7 @@ class BuyModal extends Component {
                 icon='checkmark' 
                 labelPosition='right' 
                 onClick={this.open}
-                content={`Get Name: $${accountPrice} USD`}
+                content={`Buy, $${accountPrice} USD`}
             />
             <Modal closeIcon size='tiny' dimmer='blurring' open={this.state.open} onClose={this.close}>
                 <Modal.Content>
