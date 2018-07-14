@@ -61,11 +61,14 @@ class Home extends Component {
     }
 
     onGenRandomWord = () => {
+        this.setState({searchLoading:true})
         fetch(`${MasterConfig.httpEndpoint}/word`)
         .then((response) => {
           return response.json()
         })
         .then((wordResponse) => {
+            // turn off nameloading
+            this.setState({searchLoading:false})
             // run search with a random word.
             this.onSearchChange({target: {value: wordResponse.word}})
         });
@@ -76,43 +79,43 @@ class Home extends Component {
             <div style={{textAlign: 'center'}}>
                 <FadeIn transitionDuration={800}>
 
-                            <ResultCard 
-                                accountPrice={this.state.accountPrice}
-                                searchResponse={this.state.searchResponse}
-                                showSuccessModal={this.showSuccessModal} 
-                            />
-                            <br />
+                    <ResultCard 
+                        accountPrice={this.state.accountPrice}
+                        searchResponse={this.state.searchResponse}
+                        showSuccessModal={this.showSuccessModal} 
+                    />
+                    <br />
 
-                            <Input 
-                                size='huge' 
-                                icon='search' 
-                                placeholder='Find your EOS name...' 
-                                onChange={this.onSearchChange}
-                                maxLength={12}
-                                style={{backgroundColor: 'transparent', marginBottom: '0.25em'}}
-                                value={this.state.searchTerm}
-                                loading={this.state.searchLoading}
-                                disabled={this.state.searchLoading}
-                                error={this.state.searchResponse.success}
-                                autoFocus={true}
-                            />
-                            <br />
-                            <span>
-                                {this.state.searchTerm.length}/12 characters.
-                                &nbsp; &nbsp;
-                                <Button animated size='mini' color='blue' onClick={this.onGenRandomWord}>
-                                <Button.Content visible>Random Name</Button.Content>
-                                <Button.Content hidden>
-                                    Generate
-                                </Button.Content>
-                                </Button>
+                    <Input 
+                        size='huge' 
+                        icon='search' 
+                        placeholder='Find your EOS name...' 
+                        onChange={this.onSearchChange}
+                        maxLength={12}
+                        style={{backgroundColor: 'transparent', marginBottom: '0.25em'}}
+                        value={this.state.searchTerm}
+                        loading={this.state.searchLoading}
+                        disabled={this.state.searchLoading}
+                        error={this.state.searchResponse.success}
+                        autoFocus={true}
+                    />
+                    <br />
+                    <span>
+                        {this.state.searchTerm.length}/12 characters.
+                        &nbsp; &nbsp;
+                        <Button animated size='mini' color='blue' onClick={this.onGenRandomWord}>
+                        <Button.Content visible>Random Name</Button.Content>
+                        <Button.Content hidden>
+                            Generate
+                        </Button.Content>
+                        </Button>
 
-                            </span>
-                            <div className="spacer" />
+                    </span>
+                    <div className="spacer" />
 
-            </FadeIn>
+                </FadeIn>
 
-            <SuccessModal open={this.state.successModalOpen} />
+                <SuccessModal open={this.state.successModalOpen} />
             </div>
         );
     }
