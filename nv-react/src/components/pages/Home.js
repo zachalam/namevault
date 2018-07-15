@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Button, Icon, Card } from 'semantic-ui-react'
-import logo from '../../images/logo.png'
+import { Input, Button } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
@@ -37,7 +36,7 @@ class Home extends Component {
 
     onSearchChange = (e) => {
         // only allow alphanumeric chars.
-        let letters = /^[1-5a-zA-Z]+$/;
+        let letters = /^[1-5a-z]+$/;
         let { value } = e.target;
 
         if(value.match(letters) || value === '') {
@@ -98,6 +97,10 @@ class Home extends Component {
                         disabled={this.state.searchLoading}
                         error={this.state.searchResponse.success}
                         autoFocus={true}
+                        autoComplete="off" 
+                        autoCorrect="off" 
+                        autoCapitalize="off" 
+                        spellCheck="false"
                     />
                     <br />
                     <span>
