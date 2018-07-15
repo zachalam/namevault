@@ -4,8 +4,8 @@ const cors = require('cors')
 const app = express()
 const bodyParser = require("body-parser");
 
-// get body.
-app.use(bodyParser.urlencoded({extended: true}));
+// parse body for json.
+app.use(bodyParser.json());
 // middleware for Access-Control-Allow-Origin
 app.use(cors())
 

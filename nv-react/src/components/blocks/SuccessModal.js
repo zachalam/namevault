@@ -21,7 +21,7 @@ class SuccessModal extends Component {
         let { checkout } = window
 
         return ( 
-            <Modal closeIcon size='tiny' dimmer='blurring' open={this.state.open} onClose={this.close}>
+            <Modal closeIcon size='mini' dimmer='blurring' open={this.state.open} onClose={this.close}>
                 <Modal.Content>
 
                     <h2>Payment Pending..</h2>

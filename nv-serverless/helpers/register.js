@@ -1,6 +1,7 @@
 // a method that registers an account name on the EOS network.
+const Eos = require('eosjs')
 const config_eos = require('../config/eos.js')
-
+const eos = Eos(config_eos)
 
 function register(newAccountName,newOwnerKey,newActiveKey) {
     eos.transaction(tr => {

@@ -104,7 +104,7 @@ class BuyModal extends Component {
                 onClick={this.open}
                 content={`Buy, $${accountPrice} USD`}
             />
-            <Modal closeIcon size='tiny' dimmer='blurring' open={this.state.open} onClose={this.close}>
+            <Modal closeIcon size='mini' dimmer='blurring' open={this.state.open} onClose={this.close}>
                 <Modal.Content>
 
                     <h1><Icon name='user circle' /> {searchResponse.account}</h1>
