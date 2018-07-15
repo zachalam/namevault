@@ -19,7 +19,7 @@ class App extends Component {
     >
       <Grid.Column style={{maxWidth: 400}}>
         <img src={logo} className="App-logo" alt="NameVault Logo" style={{width:"100%"}} />
-          <Segment stacked={true} style={{padding:'2em'}}>
+          <Segment raised={true} style={{padding:'2em'}}>
             <Home />
           </Segment>
         <div>
