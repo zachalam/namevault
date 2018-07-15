@@ -32,11 +32,12 @@ function paid(req,res) {
             console.log("newActiveKey", newActiveKey)
             console.log('=====================')
 
-            registerName(newAccountName,newOwnerKey,newActiveKey)
-            res.status(200).json({success: true})
+            registerName(newAccountName,newOwnerKey,newActiveKey,(successful) => {
+                res.status(200).json({success: true})
+            })
+            
         }
 
-        res.status(200).json({success: false})
     } else {
         // invalid payment request.
         console.log("INVALID COINBASE WEBHOOK")

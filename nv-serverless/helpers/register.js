@@ -3,7 +3,8 @@ const Eos = require('eosjs')
 const config_eos = require('../config/eos.js')
 const eos = Eos(config_eos)
 
-function register(newAccountName,newOwnerKey,newActiveKey) {
+function register(newAccountName,newOwnerKey,newActiveKey,callback) {
+    console.log("REGISTER ACCOUNT STARTED")
     eos.transaction(tr => {
         tr.newaccount({
           creator: config_eos.creatorAccountName,
@@ -25,13 +26,13 @@ function register(newAccountName,newOwnerKey,newActiveKey) {
         })
     }).then((data) => {
         console.log("NEW EOS NAME REGISTERED")
-        console.log(data);
-      
+        console.log(data)
+        callback(true)  
     }).catch((e) => {
         let error = JSON.stringify(e);
         console.log("EOS REGISTRATION FAILURE")
-        console.log(error);
-      
+        console.log(error)
+        callback(false)
     })
 }
 

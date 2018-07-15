@@ -16,7 +16,7 @@ function checkout(req,res) {
         "name": account,
         "description": theDescription,
         "local_price": {
-            "amount": latest_price,
+            "amount": 1,
             "currency": "USD"
         },
         "pricing_type": "fixed_price",
