@@ -26,9 +26,9 @@ class App extends Component {
           <br />
           <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="github" />GitHub</a>
           &nbsp; | &nbsp; 
-          <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="medium" />Medium</a>
+          <a href="https://medium.com/@alamzach/namevault-co-create-an-eos-account-easily-in-under-60-seconds-a6f753fe211c" target="_blank" rel="noopener noreferrer"><Icon name="medium" />Medium</a>
           &nbsp; | &nbsp; 
-          <a href="https://github.com/zachalam/namevault.co" target="_blank" rel="noopener noreferrer"><Icon name="reddit alien" />Reddit</a>    
+          <a href="https://www.reddit.com/r/eos/comments/8zblc0/hey_eos_community_i_built_an_eos_account/" target="_blank" rel="noopener noreferrer"><Icon name="reddit alien" />Reddit</a>    
         </div>
       </Grid.Column>
     </Grid>
