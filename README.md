@@ -6,7 +6,7 @@ name**vault**.co is a fast and user friendly account creator for the EOS blockch
 
 - No existing EOS account or wallet required.
 - Generate *quality* names with the `Random Name` feature.
-- Search any name and buy within 60 seconds!
+- Search any name and pay with coinbase in just 60 seconds!
 
 <a href="http://namevault.co"><img src="https://media.giphy.com/media/dgfOysCTqd6JKn8f8l/giphy.gif" alt="namevault demo" /></a>
 
