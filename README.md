@@ -1,7 +1,8 @@
-![Namevault.co logo](https://raw.githubusercontent.com/zachalam/namevault.co/master/nv-react/src/images/logo.png)
-___
+![Namevault.co logo](https://raw.githubusercontent.com/zachalam/namevault.co/master/nv-react/src/images/nv-banner.jpg)
+
 ## What is namevault?
-name**vault**.co is the *fastest* account creator for the EOS blockchain. 
+name**vault**.co is a fast and user friendly account creator for the EOS blockchain. 
+>Try it here: https://namevault.co/
 
 - No existing EOS account or wallet required.
 - Generate *quality* names with the `Random Name` feature.
@@ -17,7 +18,7 @@ Continue Reading Here: https://developers.eos.io/eosio-nodeos/docs/accounts-and-
 
 
 ## Project Hierarchy
-The namevault.co repo is broken into separate projects (each running independently and in a separate environment)
+The namevault.co repo is broken into (2) separate projects (each running independently and in a separate environment)
 - `nv-serverless`: Serverless framework functions that interacts with the EOS blockchain (running on AWS Lambda)
 - `nv-react` React webapp that interacts with the *nv-serverless* endpoints (running on Github Pages)
 
@@ -30,7 +31,7 @@ git clone https://github.com/zachalam/namevault.co.git
 ```
 
 ## Key Installation
-To accept payments & automatically generate new accounts you'll need to install your own keys.
+To accept payments & automatically generate new accounts you'll need to install your own keys. **At the very least, You must copy keys_ex.js to keys.js in order for the project to work.**
 
 ```
 cp nv-serverless/config/keys_ex.js nv-serverless/config/keys.js
@@ -71,4 +72,4 @@ Replace the existing `httpEndpoint` value with the serverless deployed endpoint 
 httpEndpoint: 'https://kfj0fl66oh.execute-api.us-east-1.amazonaws.com/dev'
 ```
 
-You can either start the software (while inside the nv-react folder) locally on your machine by running `npm run start` or for deployment elsewhere by running `npm run build`.
+You can either start the software (while inside the `nv-react` folder) locally on your machine by running `npm run start` or for deployment elsewhere by running `npm run build`.
