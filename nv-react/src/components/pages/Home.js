@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Button } from 'semantic-ui-react'
+import { Input, Button, Form, Label } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
@@ -12,7 +12,8 @@ class Home extends Component {
         searchLoading: false,
         searchResponse: {},
         accountPrice: '',
-        successModalOpen: false
+        successModalOpen: false,
+        inputError: false
     }
 
     componentDidMount() {
@@ -41,7 +42,7 @@ class Home extends Component {
 
         if(value.match(letters) || value === '') {
             // save search term so far.
-            this.setState({searchTerm: value})
+            this.setState({searchTerm: value, inputError: false})
 
             // if the value suplied is the correct length, run search.
             if(value.length===12) {
@@ -49,6 +50,9 @@ class Home extends Component {
                 this.setState({searchLoading: true, searchResponse: {}})
                 this.runSearch(value)
             } 
+        } else {
+            // illegal char entered.
+            this.setState({inputError: true})
         }
     }
 
@@ -85,6 +89,16 @@ class Home extends Component {
                     />
                     <br />
 
+
+                    {this.state.inputError ? 
+                        <FadeIn>
+                            <Label color='red'>
+                                Lowercase letters (a-z) and numbers (1-5) only.
+                            </Label>
+                            <br />
+                        </FadeIn> 
+                    : null }
+
                     <Input 
                         size='huge' 
                         icon='search' 
@@ -102,6 +116,8 @@ class Home extends Component {
                         autoCapitalize="off" 
                         spellCheck="false"
                     />
+
+                    
                     <br />
                     <span>
                         {this.state.searchTerm.length}/12 characters.
