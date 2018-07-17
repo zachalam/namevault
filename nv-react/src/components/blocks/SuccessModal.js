@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal } from 'semantic-ui-react'
+import { Modal, Label, Button } from 'semantic-ui-react'
 
 class SuccessModal extends Component {
     
@@ -19,6 +19,7 @@ class SuccessModal extends Component {
         if(!window.checkout) return null
 
         let { checkout } = window
+        let { data } = checkout.checkout
 
         return ( 
             <Modal closeIcon size='mini' dimmer='blurring' open={this.state.open} onClose={this.close}>
@@ -27,9 +28,9 @@ class SuccessModal extends Component {
                     <h2>Payment Pending..</h2>
                     We've opened a new tab to accept your payment (make sure popups are enabled for this domain).
                     <br /><br />
-                    Your name will be <b>assigned immediately</b> after <u>confirmed</u> payment.
+                    The account, <Label color='blue'>{data.name}</Label> will be assigned to you. <u><b>After</b></u> the payment is confirmed, <a href={`https://eospark.com/MainNet/account/${data.name}`} target="_blank">visit this 3rd party link to see your name on the EOS blockchain</a>.
                     <br /><br />
-                    <a href={checkout.redirect} target="_blank">re-open checkout</a>
+                    <Button href={checkout.redirect} target="_blank">re-open checkout</Button>
 
                 </Modal.Content>
             </Modal>
