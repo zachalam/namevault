@@ -22,7 +22,10 @@ class Home extends Component {
         .then(response => response.json())
         .then((pricing) => {
           this.setState({accountPrice: pricing.price})
-        });      
+        });   
+        // run search automatically if present in url hash.
+        let hashName = window.location.hash.replace("#","")
+        if(hashName.length <= MasterConfig.requiredChars) this.onSearchChange({target: {value: hashName}})   
     }
     
     runSearch = (name) => {
@@ -45,7 +48,7 @@ class Home extends Component {
             this.setState({searchTerm: value, inputError: false})
 
             // if the value suplied is the correct length, run search.
-            if(value.length===12) {
+            if(value.length===MasterConfig.requiredChars) {
                 // trigger search run.
                 this.setState({searchLoading: true, searchResponse: {}})
                 this.runSearch(value)
@@ -104,7 +107,7 @@ class Home extends Component {
                         icon='search' 
                         placeholder='Find your EOS name...' 
                         onChange={this.onSearchChange}
-                        maxLength={12}
+                        maxLength={MasterConfig.requiredChars}
                         style={{backgroundColor: 'transparent', marginBottom: '0.25em'}}
                         value={this.state.searchTerm}
                         loading={this.state.searchLoading}
@@ -120,7 +123,7 @@ class Home extends Component {
                     
                     <br />
                     <span>
-                        {this.state.searchTerm.length}/12 characters.
+                        {this.state.searchTerm.length}/{MasterConfig.requiredChars} characters.
                         &nbsp; &nbsp;
                         <Button animated size='mini' color='blue' onClick={this.onGenRandomWord}>
                         <Button.Content visible>Random Name</Button.Content>
