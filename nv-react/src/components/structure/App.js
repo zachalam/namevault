@@ -18,7 +18,7 @@ class App extends Component {
       verticalAlign='middle'
     >
       <Grid.Column style={{maxWidth: 400}}>
-        <img src={logo} className="App-logo" alt="NameVault Logo" style={{width:"100%"}} />
+        <img src={logo} alt="NameVault Logo" style={{maxWidth:"75%"}} />
           <Segment raised={true} style={{padding:'2em'}}>
             <Home />
           </Segment>

@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  overflow-x:hidden;
 }
 
 html {
@@ -11,6 +12,7 @@ body {
   display: table-cell;
   vertical-align: middle;
   padding-bottom:5em;
+  padding-top:1em;
   color: #444;
   
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,eeeeee+47,dddddd+100 */
