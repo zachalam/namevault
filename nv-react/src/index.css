@@ -14,15 +14,16 @@ body {
   padding-bottom:5em;
   padding-top:1em;
   color: #444;
-  
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,eeeeee+47,dddddd+100 */
-  background: #ffffff; /* Old browsers */
-  background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 47%, #dddddd 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #ffffff 0%,#eeeeee 47%,#dddddd 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #ffffff 0%,#eeeeee 47%,#dddddd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 ); /* IE6-9 */
+
+  background: url(images/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;    
 }
 
 h1,h2,h3 { margin-bottom: 0.1em}
 
 .spacer { padding:.3em; }
+.footerLink { color:white; }
+.footerLink:hover { color:white; text-decoration: underline; }
