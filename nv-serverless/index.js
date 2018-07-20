@@ -21,7 +21,7 @@ const wordFunction = require('./functions/word.js')
 app.get('/', function (req, res) { res.send('namevault.co says hi') })
 
 // generate random account
-app.get('/word', wordFunction)
+app.get('/word/:baseWord?', wordFunction)
 
 // get the current service price.
 app.get('/price', priceFunction)
