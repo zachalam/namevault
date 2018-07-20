@@ -25,7 +25,7 @@ function genWord(baseWord='') {
             return a.length > b.length ? a : b
         }, '');
         let word = longestWord + '555555'
-        foundWord = word.substring(0,12)
+        foundWord = word.substring(0,wordLengthNeeded)
     }
 
     return baseWord+foundWord
