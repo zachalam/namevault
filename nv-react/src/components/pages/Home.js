@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Button, Form, Label } from 'semantic-ui-react'
+import { Input, Label } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
@@ -10,7 +10,7 @@ class Home extends Component {
 
     state = {
         searchTerm: '',
-        searchTermFinish: 'friday',
+        searchTermFinish: '',
         searchLoading: false,
         searchResponse: {},
         accountPrice: '',
@@ -86,7 +86,7 @@ class Home extends Component {
         let { searchTerm, searchTermFinish } = this.state
         if(!searchTermFinish.length)
             // copy search term so far, then run random word generator
-            this.setState({searchTermFinish: this.state.searchTerm},this.onGenRandomWord)
+            this.setState({searchTermFinish: searchTerm},this.onGenRandomWord)
         else
             // just run finish word generator (with already saved word)
             this.onGenRandomWord()
