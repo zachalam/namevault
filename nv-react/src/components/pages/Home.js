@@ -4,11 +4,13 @@ import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
 import SuccessModal from '../blocks/SuccessModal'
+import RandomWordButton from '../blocks/RandomWordButton'
 
 class Home extends Component {
 
     state = {
         searchTerm: '',
+        searchTermFinish: 'friday',
         searchLoading: false,
         searchResponse: {},
         accountPrice: '',
@@ -68,7 +70,7 @@ class Home extends Component {
 
     onGenRandomWord = () => {
         this.setState({searchLoading:true})
-        fetch(`${MasterConfig.httpEndpoint}/word`)
+        fetch(`${MasterConfig.httpEndpoint}/word/${this.state.searchTermFinish}`)
         .then((response) => {
           return response.json()
         })
@@ -78,6 +80,31 @@ class Home extends Component {
             // run search with a random word.
             this.onSearchChange({target: {value: wordResponse.word}})
         });
+    }
+
+    onFinishRandomWord = () => {
+        let { searchTerm, searchTermFinish } = this.state
+        if(!searchTermFinish.length)
+            // copy search term so far, then run random word generator
+            this.setState({searchTermFinish: this.state.searchTerm},this.onGenRandomWord)
+        else
+            // just run finish word generator (with already saved word)
+            this.onGenRandomWord()
+    }
+
+    shouldShowFinishButton = () => {
+        // the finish random button is showed IF, 
+        // we already finishing random words - OR - the search term exists and isn't the maximum length.
+        let { searchTerm, searchTermFinish } = this.state
+        return Boolean(
+            searchTermFinish.length ||
+            (searchTerm.length > 0 && searchTerm.length < MasterConfig.requiredChars)
+        )
+    }
+
+    clearSearchTermFinish = () => {
+        // resets the finish random word.
+        this.setState({searchTermFinish: ''})
     }
 
     render() {
@@ -125,12 +152,13 @@ class Home extends Component {
                     <span>
                         {this.state.searchTerm.length}/{MasterConfig.requiredChars} characters.
                         &nbsp; &nbsp;
-                        <Button animated size='mini' color='blue' onClick={this.onGenRandomWord}>
-                        <Button.Content visible>Random Name</Button.Content>
-                        <Button.Content hidden>
-                            Generate
-                        </Button.Content>
-                        </Button>
+                        <RandomWordButton
+                            onGenRandomWord={this.onGenRandomWord}
+                            onFinishRandomWord={this.onFinishRandomWord}
+                            showFinish={this.shouldShowFinishButton()}
+                            searchTermFinish={this.state.searchTermFinish}
+                            reset={this.clearSearchTermFinish}
+                        />
 
                     </span>
                     <div className="spacer" />
