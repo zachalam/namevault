@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Label, Button } from 'semantic-ui-react'
+import { Modal, Label, Form, Button } from 'semantic-ui-react'
 
 class SuccessModal extends Component {
     
@@ -26,11 +26,18 @@ class SuccessModal extends Component {
                 <Modal.Content>
 
                     <h2>Payment Pending..</h2>
-                    We've opened a new tab to accept your payment (make sure popups are enabled for this domain).
+                    We've opened a new tab to accept your payment (ensure <b>popups are enabled</b> here).
                     <br /><br />
-                    The account, <Label color='blue'>{data.name}</Label> will be assigned to you. <u><b>After</b></u> the payment is confirmed, <a href={`https://eospark.com/MainNet/account/${data.name}`} target="_blank">visit this 3rd party link to see your name on the EOS blockchain</a>.
+                    The account, <Label color='blue'>{data.name}</Label> will be assigned to you. <u><b>After</b></u> confirmed payment, <a href={`https://eospark.com/MainNet/account/${data.name}`} target="_blank">visit this 3rd party link to see your name on the EOS blockchain</a>.
                     <br /><br />
-                    <Button href={checkout.redirect} target="_blank">re-open checkout</Button>
+
+                    <Form.Field inline>
+                        <Button href={checkout.redirect} target="_blank">re-open checkout</Button>
+                        <Label basic color='red' pointing='left'>
+                            <span style={{color:'white'}}>click this to pay!</span>
+                        </Label>
+                    </Form.Field>
+                    
 
                 </Modal.Content>
             </Modal>
