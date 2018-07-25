@@ -116,7 +116,7 @@ class BuyModal extends Component {
                     {this.renderKeyInputs(true)}
                     <br />
                     {this.state.showActivePair ? this.renderKeyInputs(false) : 
-                    <Button size='mini' onClick={this.showActive}>+ add active public key (optional)</Button>}
+                    <Button size='mini' onClick={this.showActive}>+ active public key (optional)</Button>}
 
                 </Modal.Content>
                 <Modal.Actions>

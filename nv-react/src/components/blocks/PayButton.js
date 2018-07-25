@@ -37,10 +37,11 @@ class PayButton extends Component {
             && (!activePublic.length || ecc.isValidPublic(activePublic))
 
         return (
-        <div>
+        <div align={'center'}>
             {!canSubmit ? <div>A <u>valid</u> EOS public key is required.<div className="spacer" /></div> : null}
             <Button 
                 positive 
+                fluid
                 icon='cart' 
                 content={`Proceed To Coinbase: $${accountPrice} USD`}
                 disabled={!canSubmit} 
