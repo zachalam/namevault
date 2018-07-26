@@ -10,7 +10,7 @@ function checkout(req,res) {
     let theDescription = [owner,active].filter((v) => {return v}).join(", ")
   
     // get last price before creating checkout.
-    getPrice((latest_price) => {
+    getPrice((latest_price,extraPrice) => {
       // create coinbase checkout.
       coinbase.checkouts.create({
         "name": account,

@@ -39,12 +39,15 @@ function getPrice(callback) {
                 // 4kb + 0.2eos are sent to owner as part of purchase.
                 let total_price = Math.ceil((4*ramprice_in_eos)*price) + 
                 Math.ceil(0.2*price) + Math.ceil(config_master.standardMarkup)
+
+                // also calculate the price for extra stake (0.25EOS)
+                let extra_stake = Math.ceil((price * config_master.extraStake))
     
-                callback(total_price)
+                callback(total_price,extra_stake)
             })
             .catch((error) => {
                 // unable to retrieve market data for RAM.
-                callback(config_master.fallbackPricing)
+                callback(config_master.fallbackPricing,config_master.fallbackPricing)
             })
     
         //res.status(200).json({success: true, market}) market contains ether price.
