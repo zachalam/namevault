@@ -1,4 +1,4 @@
 export default {
-    httpEndpoint: 'https://kfj0fl66oh.execute-api.us-east-1.amazonaws.com/dev',
+    httpEndpoint: 'https://8p3f97b8si.execute-api.us-east-1.amazonaws.com/prod',
     requiredChars: 12
 }
