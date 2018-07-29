@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Label } from 'semantic-ui-react'
+import { Input, Icon, Label } from 'semantic-ui-react'
 import FadeIn from 'react-fade-in'
 import MasterConfig from '../../config/Master'
 import ResultCard from '../blocks/ResultCard'
@@ -15,7 +15,8 @@ class Home extends Component {
         searchResponse: {},
         accountPrice: '',
         successModalOpen: false,
-        inputError: false
+        inputError: false,
+        showLandingTitle: true  // show "got your EOS account on page load"
     }
 
     componentDidMount() {
@@ -31,6 +32,9 @@ class Home extends Component {
     }
     
     runSearch = (name) => {
+        // hide landing page title
+        if(this.state.showLandingTitle) this.setState({showLandingTitle: false})
+        // run search
         fetch(`${MasterConfig.httpEndpoint}/lookup/${name}`)
         .then((response) => {
           return response.json()
@@ -109,17 +113,17 @@ class Home extends Component {
 
     render() {
         return (
-            <div style={{textAlign: 'center'}}>
+            <div style={{textAlign: 'center', paddingTop: '0.25em'}}>
+                {this.state.showLandingTitle ? <h3><Icon name='user' /> GET YOUR EOS ACCOUNT</h3> : null }
+
+                <ResultCard 
+                    accountPrice={this.state.accountPrice}
+                    searchResponse={this.state.searchResponse}
+                    showSuccessModal={this.showSuccessModal} 
+                />
+                <br />
+
                 <FadeIn transitionDuration={800}>
-
-                    <ResultCard 
-                        accountPrice={this.state.accountPrice}
-                        searchResponse={this.state.searchResponse}
-                        showSuccessModal={this.showSuccessModal} 
-                    />
-                    <br />
-
-
                     {this.state.inputError ? 
                         <FadeIn>
                             <Label color='red'>
@@ -146,7 +150,6 @@ class Home extends Component {
                         autoCapitalize="off" 
                         spellCheck="false"
                     />
-
                     
                     <br />
                     <span>
@@ -159,17 +162,14 @@ class Home extends Component {
                             searchTermFinish={this.state.searchTermFinish}
                             reset={this.clearSearchTermFinish}
                         />
-
                     </span>
-                    <div className="spacer" />
-
                 </FadeIn>
-
+    
+                <div className="spacer" />
                 <SuccessModal open={this.state.successModalOpen} />
             </div>
         );
     }
 }
-
 
 export default Home
