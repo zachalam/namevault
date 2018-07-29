@@ -40,7 +40,7 @@ function getPrice(callback) {
                 let total_price = Math.ceil((4*ramprice_in_eos)*price) + 
                 Math.ceil(0.2*price) + Math.ceil(config_master.standardMarkup)
 
-                // also calculate the price for extra stake (0.25EOS)
+                // also calculate the price for extra stake (0.10EOS)
                 let extra_stake = Math.ceil((price * config_master.extraStake))
     
                 callback(total_price,extra_stake)
