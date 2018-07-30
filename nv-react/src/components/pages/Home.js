@@ -34,6 +34,8 @@ class Home extends Component {
     runSearch = (name) => {
         // hide landing page title
         if(this.state.showLandingTitle) this.setState({showLandingTitle: false})
+        // set url hash.
+        window.location.hash = `#${name}`
         // run search
         fetch(`${MasterConfig.httpEndpoint}/lookup/${name}`)
         .then((response) => {
