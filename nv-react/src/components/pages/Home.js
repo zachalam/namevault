@@ -115,8 +115,8 @@ class Home extends Component {
 
     render() {
         return (
-            <div style={{textAlign: 'center', paddingTop: '0.25em'}}>
-                {this.state.showLandingTitle ? <h3><Icon name='user outline' /> Get your EOS account!</h3> : null }
+            <div style={{textAlign: 'center', paddingTop: '0.3em'}}>
+                {this.state.showLandingTitle ? <h3><Icon name='user' /> GET YOUR EOS ACCOUNT</h3> : null }
 
                 <ResultCard 
                     accountPrice={this.state.accountPrice}
