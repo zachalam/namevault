@@ -43,3 +43,13 @@ h3 { color:#888 }
   font-size:1.2em;
   background-color:rgba(0,0,0,.30)
 }
+
+@media only screen and (max-width: 600px) {
+  .fixedFooter {
+      position: static;
+      display: inline-block;
+      width: 100%;
+      margin-top:2em;
+      margin-bottom:0;
+  }
+}
