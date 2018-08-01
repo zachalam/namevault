@@ -33,6 +33,8 @@ class App extends Component {
           </div>
         </Grid.Column>
       </Grid>
+
+      <div className='fixedFooter'>Need help? Watch the <a href="https://www.youtube.com/watch?v=dgKB6qwLTfk" target="_blank" rel="noopener noreferrer">2 minute video</a>!</div>
     </div>
     );
   }

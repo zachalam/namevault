@@ -22,9 +22,24 @@ body {
   background-size: cover;    
 }
 
+a { text-decoration: underline; }
+
 h1,h2,h3 { margin-bottom: 0.1em}
-h3 { color:#777 }
+h3 { color:#888 }
 
 .spacer { padding:.3em; }
-.footerLink { color:white; }
+.footerLink { color:white; text-decoration:none; }
 .footerLink:hover { color:white; text-decoration: underline; }
+
+
+.fixedFooter {
+  position: fixed; 
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color:white;
+  padding:1.3em;
+  font-size:1.3em;
+  background-color:rgba(0,0,0,.45)
+}
