@@ -23,6 +23,7 @@ body {
 }
 
 h1,h2,h3 { margin-bottom: 0.1em}
+h3 { color:#777 }
 
 .spacer { padding:.3em; }
 .footerLink { color:white; }
