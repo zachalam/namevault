@@ -1,10 +1,16 @@
 // a method that registers an account name on the EOS network.
 const Eos = require('eosjs')
 const config_eos = require('../config/eos.js')
+const config_master = require('../config/master.js')
 const eos = Eos(config_eos)
 
 function register(newAccountName,newOwnerKey,newActiveKey,callback) {
     console.log("REGISTER ACCOUNT STARTED")
+
+    // if there is a + in the account name, stake extra CPU/NET.
+    let shouldStakeExtra = Boolean(newAccountName.indexOf("+") > 1)
+    let stakeAmt = shouldStakeExtra ? '0.0600 EOS' : '0.0100 EOS'
+
     eos.transaction(tr => {
         tr.newaccount({
           creator: config_eos.creatorAccountName,
@@ -20,8 +26,8 @@ function register(newAccountName,newOwnerKey,newActiveKey,callback) {
         tr.delegatebw({
           from: config_eos.creatorAccountName,
           receiver: newAccountName,
-          stake_net_quantity: '0.0100 EOS',
-          stake_cpu_quantity: '0.0100 EOS',
+          stake_net_quantity: stakeAmt,
+          stake_cpu_quantity: stakeAmt,
           transfer: 1
         })
     }).then((data) => {
