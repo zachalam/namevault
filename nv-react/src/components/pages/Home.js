@@ -14,6 +14,7 @@ class Home extends Component {
         searchLoading: false,
         searchResponse: {},
         accountPrice: '',
+        extraPrice: '',
         successModalOpen: false,
         inputError: false,
         showLandingTitle: true  // show "got your EOS account on page load"
@@ -24,7 +25,7 @@ class Home extends Component {
         fetch(`${MasterConfig.httpEndpoint}/price`)
         .then(response => response.json())
         .then((pricing) => {
-          this.setState({accountPrice: pricing.price})
+          this.setState({accountPrice: pricing.price, extraPrice: pricing.extraPrice})
         });   
         // run search automatically if present in url hash.
         let hashName = window.location.hash.replace("#","")
@@ -123,6 +124,7 @@ class Home extends Component {
 
                 <ResultCard 
                     accountPrice={this.state.accountPrice}
+                    extraPrice={this.state.extraPrice}
                     searchResponse={this.state.searchResponse}
                     showSuccessModal={this.showSuccessModal} 
                 />

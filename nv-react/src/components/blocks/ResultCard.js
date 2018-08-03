@@ -7,7 +7,7 @@ class ResultCard extends Component {
 
     render() {
 
-        let { searchResponse, accountPrice } = this.props
+        let { searchResponse, accountPrice, extraPrice } = this.props
         let nameAvailable = !searchResponse.success
 
         // no result available.
@@ -24,6 +24,7 @@ class ResultCard extends Component {
                     <BuyModal 
                         searchResponse={searchResponse}
                         accountPrice={accountPrice}
+                        extraPrice={extraPrice}
                         showSuccessModal={this.props.showSuccessModal} 
                     />
                     <div className='spacer' />

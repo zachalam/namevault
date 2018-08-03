@@ -91,7 +91,7 @@ class BuyModal extends Component {
     }
 
     render() {
-        let { searchResponse, accountPrice } = this.props
+        let { searchResponse, accountPrice, extraPrice } = this.props
 
         return (
         <div>
@@ -122,6 +122,7 @@ class BuyModal extends Component {
                 <Modal.Actions>
                     <PayButton 
                         accountPrice={accountPrice}
+                        extraPrice={extraPrice}
                         ownerPublic={this.state.ownerPublic}
                         activePublic={this.state.activePublic}
                         name={searchResponse.account}

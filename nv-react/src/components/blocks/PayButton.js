@@ -1,16 +1,36 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Checkbox, Button } from 'semantic-ui-react'
 import ecc from 'eosjs-ecc'
 import MasterConfig from '../../config/Master'
 
 class PayButton extends Component {
 
     state = {
-        isLoading: false
+        isLoading: false,
+        wantsExtra: false
+    }
+
+    wantsExtra = () => {
+        let { wantsExtra } = this.state
+        this.setState({wantsExtra: !wantsExtra})
+    }
+
+    getName = () => {
+        // add a plus to the order name (if extra stake is wanted).
+        let { wantsExtra } = this.state
+        let { name } = this.props
+        return wantsExtra ? `${name}+` : name
+    }
+
+    getPrice = () => {
+        let { wantsExtra } = this.state        
+        let { accountPrice, extraPrice } = this.props
+        return wantsExtra ? accountPrice+extraPrice : accountPrice
     }
 
     getCheckout = () => {
-        let { name, ownerPublic, activePublic } = this.props
+        let { ownerPublic, activePublic } = this.props
+        let name = this.getName()
         // set loading status.
         this.setState({isLoading:true})
         // get checkout.
@@ -29,7 +49,8 @@ class PayButton extends Component {
     }
 
     render() {
-        let { ownerPublic, activePublic, accountPrice } = this.props
+        let { ownerPublic, activePublic } = this.props
+        let { wantsExtra } = this.state
 
         // to submit, the `ownerPublic` key MUST be present AND valid.
         // an `activePublic` key is optional, but if present MUST be valid.
@@ -38,12 +59,15 @@ class PayButton extends Component {
 
         return (
         <div align={'center'}>
-            {!canSubmit ? <div>A <u>valid</u> EOS public key is required.<div className="spacer" /></div> : null}
+            {!canSubmit ? <div>A <u>valid</u> EOS public key is required.</div> : 
+            <div><Checkbox onClick={this.wantsExtra} defaultChecked={wantsExtra}
+            label={`Get 0.12 EOS (6x more) for just $1 extra.`} /></div> }
+            <div className="spacer" />
             <Button 
                 positive 
                 fluid
                 icon='cart' 
-                content={`Proceed To Coinbase: $${accountPrice} USD`}
+                content={`Proceed To Coinbase: $${this.getPrice()} USD`}
                 disabled={!canSubmit} 
                 loading={this.state.isLoading}
                 onClick={this.getCheckout}
