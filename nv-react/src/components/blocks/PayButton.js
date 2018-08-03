@@ -49,7 +49,7 @@ class PayButton extends Component {
     }
 
     render() {
-        let { ownerPublic, activePublic } = this.props
+        let { ownerPublic, activePublic, extraPrice } = this.props
         let { wantsExtra } = this.state
 
         // to submit, the `ownerPublic` key MUST be present AND valid.
@@ -61,7 +61,7 @@ class PayButton extends Component {
         <div align={'center'}>
             {!canSubmit ? <div>A <u>valid</u> EOS public key is required.</div> : 
             <div><Checkbox onClick={this.wantsExtra} defaultChecked={wantsExtra}
-            label={`Get 0.12 EOS (6x more) for just $1 extra.`} /></div> }
+            label={`Get 0.12 EOS (6x more) for just $${extraPrice} extra.`} /></div> }
             <div className="spacer" />
             <Button 
                 positive 
