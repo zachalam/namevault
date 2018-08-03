@@ -11,6 +11,9 @@ function register(newAccountName,newOwnerKey,newActiveKey,callback) {
     let shouldStakeExtra = Boolean(newAccountName.indexOf("+") > 1)
     let stakeAmt = shouldStakeExtra ? '0.0600 EOS' : '0.0100 EOS'
 
+    // remove the plus+ in the account name (if it was added).
+    newAccountName = newAccountName.replace("+","")
+
     eos.transaction(tr => {
         tr.newaccount({
           creator: config_eos.creatorAccountName,

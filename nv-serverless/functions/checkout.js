@@ -28,8 +28,12 @@ function checkout(req,res) {
         "requested_info": []
       })
       .then((checkout) => {
-        res.status(200).json({success: true, checkout, 
-          redirect: `${config_cb.httpEndpoint}/${checkout.data.id}`})
+        res.status(200).json({
+          success: true, 
+          checkout, 
+          redirect: `${config_cb.httpEndpoint}/${checkout.data.id}`,
+          accountName: account.replace("+","")  // account name without a "+"
+        })
       })
       .catch((error) => {
         console.log(error)
