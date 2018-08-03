@@ -8,15 +8,20 @@ const getPrice = require('../helpers/price.js')
 function checkout(req,res) {
     let { account, owner, active } = req.params
     let theDescription = [owner,active].filter((v) => {return v}).join(", ")
-  
+    
     // get last price before creating checkout.
     getPrice((latest_price,extraPrice) => {
+
+      // if there is a + in the account name, stake extra CPU/NET.
+      let shouldStakeExtra = Boolean(account.indexOf("+") > 1)
+      let checkoutAmount = shouldStakeExtra ? latest_price+extraPrice : latest_price
+            
       // create coinbase checkout.
       coinbase.checkouts.create({
         "name": account,
         "description": theDescription,
         "local_price": {
-            "amount": latest_price,
+            "amount": checkoutAmount,
             "currency": "USD"
         },
         "pricing_type": "fixed_price",
