@@ -35,9 +35,10 @@ function paid(req,res) {
             registerName(newAccountName,newOwnerKey,newActiveKey,(successful) => {
                 res.status(200).json({success: true})
             })
-            
+        } else {
+            // all coinbase messages respond with a 200.
+            res.status(200).json({success: true, message: 'No action needed.'})
         }
-
     } else {
         // invalid payment request.
         console.log("INVALID COINBASE WEBHOOK")
