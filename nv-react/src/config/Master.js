@@ -8,5 +8,6 @@ if(window.location.hostname === "localhost") {
 
 export default {
     httpEndpoint,
-    requiredChars: 12
+    requiredChars: 12,
+    nameLookup: 'https://eosflare.io/account'
 }
