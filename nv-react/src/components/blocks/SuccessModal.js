@@ -27,19 +27,18 @@ class SuccessModal extends Component {
                 <Modal.Content>
 
                     <h2>Payment Pending..</h2>
-                    We've opened a new tab to accept your payment (ensure <b>popups are enabled</b> here).
+                    We've opened a new tab to accept your payment (ensure <u>popups are enabled</u> here).
                     <br /><br />
-                    The account, <Label color='blue'>{checkout.accountName}</Label> will be assigned to you. <u><b>After</b></u> confirmed payment, <a href={`${config_master.nameLookup}/${checkout.accountName}`} target="_blank">visit this 3rd party link to see your name on the EOS blockchain</a>.
-                    <br /><br />
+                    The account, <Label>{checkout.accountName}</Label>, will be assigned after payment. Once confirmed, <a href={`${config_master.nameLookup}/${checkout.accountName}`} target="_blank">view your name on the EOS blockchain here</a>.
+                    <br /><br /><br />
 
                     <Form.Field inline>
                         <Button href={checkout.redirect} target="_blank">re-open checkout</Button>
                         <Label basic color='red' pointing='left'>
-                            <span style={{color:'white'}}>click this to pay!</span>
+                            <span style={{color:'white'}}>pay HERE!</span>
                         </Label>
                     </Form.Field>
-                    
-
+                
                 </Modal.Content>
             </Modal>
         )    
