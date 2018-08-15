@@ -119,7 +119,7 @@ class Home extends Component {
             <div style={{textAlign: 'center', paddingTop: '0.3em'}}>
                 {this.state.showLandingTitle ? 
                     <div>
-                        <h4><Icon name='user' /> GET YOUR EOS ACCOUNT</h4>
+                        <h3><Icon name='user' /> GET YOUR <u>EOS</u> ACCOUNT</h3>
                     </div> : null }
 
                 <ResultCard 

@@ -20,7 +20,6 @@ class SuccessModal extends Component {
         if(!window.checkout) return null
 
         let { checkout } = window
-        let { data } = checkout.checkout
 
         return ( 
             <Modal closeIcon size='mini' dimmer='blurring' open={this.state.open} onClose={this.close}>
