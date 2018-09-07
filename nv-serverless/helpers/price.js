@@ -37,7 +37,7 @@ function getPrice(callback) {
                 // service price calculated via:
                 // ((4*ramprice_in_eos)*price) + (0.2*price) + standardMarkup
                 // 4kb + 0.2eos are sent to owner as part of purchase.
-                let total_price = Math.ceil((4*ramprice_in_eos)*price) + 
+                let total_price = Math.ceil((3*ramprice_in_eos)*price) + 
                 Math.ceil(0.2*price) + Math.ceil(config_master.standardMarkup)
 
                 // also calculate the price for extra stake (0.10EOS)

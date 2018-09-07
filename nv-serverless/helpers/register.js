@@ -24,7 +24,7 @@ function register(newAccountName,newOwnerKey,newActiveKey,callback) {
         tr.buyrambytes({
           payer: config_eos.creatorAccountName,
           receiver: newAccountName,
-          bytes: 4000
+          bytes: 3000
         })
         tr.delegatebw({
           from: config_eos.creatorAccountName,
