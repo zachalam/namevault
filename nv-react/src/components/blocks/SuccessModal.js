@@ -32,9 +32,9 @@ class SuccessModal extends Component {
                     <br /><br /><br />
 
                     <Form.Field inline>
-                        <Button href={checkout.redirect} target="_blank">re-open checkout</Button>
-                        <Label basic color='red' pointing='left'>
-                            <span style={{color:'white'}}>pay HERE!</span>
+                        <Button href={checkout.redirect} color='red' target="_blank">re-open checkout</Button>
+                        <Label basic pointing='left'>
+                            <span>pay HERE!</span>
                         </Label>
                     </Form.Field>
                 
