@@ -35,10 +35,11 @@ function getPrice(callback) {
                 let { price } = market.data.quotes.USD;
     
                 // service price calculated via:
-                // ((4*ramprice_in_eos)*price) + (0.2*price) + standardMarkup
-                // 4kb + 0.2eos are sent to owner as part of purchase.
+                // ((3*ramprice_in_eos)*price) + (0.02*price)
+                // 3kb + 0.02eos are sent to owner as part of purchase.
                 let total_price = Math.ceil((3*ramprice_in_eos)*price) + 
-                Math.ceil(0.2*price) + Math.ceil(config_master.standardMarkup)
+                Math.ceil(0.02*price)
+        
 
                 // also calculate the price for extra stake (0.10EOS)
                 let extra_stake = Math.ceil((price * config_master.extraStake))
