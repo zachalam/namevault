@@ -67,7 +67,7 @@ class PayButton extends Component {
                 positive 
                 fluid
                 icon='cart' 
-                content={`Proceed To Coinbase: $${this.getPrice()} USD`}
+                content={`Pay (BTC, ETH, LTC) $${this.getPrice()} USD`}
                 disabled={!canSubmit} 
                 loading={this.state.isLoading}
                 onClick={this.getCheckout}
