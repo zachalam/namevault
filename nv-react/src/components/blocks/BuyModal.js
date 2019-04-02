@@ -121,6 +121,7 @@ class BuyModal extends Component {
                 </Modal.Content>
                 <Modal.Actions>
                     <PayButton 
+                        disabled={true}
                         accountPrice={accountPrice}
                         extraPrice={extraPrice}
                         ownerPublic={this.state.ownerPublic}

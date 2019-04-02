@@ -68,10 +68,11 @@ class PayButton extends Component {
                 fluid
                 icon='cart' 
                 content={`Pay $${this.getPrice()} USD`}
-                disabled={!canSubmit} 
+                disabled={true}    // !canSubmit
                 loading={this.state.isLoading}
                 onClick={this.getCheckout}
             />
+            ** Disabled due to unreliable Coinbase Commerce
             <div className="spacer" />
         </div>
         )
